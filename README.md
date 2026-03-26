@@ -1,26 +1,28 @@
-# XCoder
+🚀 XCoder 
+The Intelligent AI Coding Agent for Agentic Development
+XCoder is an open-source AI assistant that transforms high-level intent into production-ready code. Designed for "agentic workflows," it doesn't just suggest lines—it handles multi-step tasks, refactors entire modules, and automates testing through a unified command interface. 
+✨ Key Features
 
-XCoder AI Model
+    Agentic Execution: Autonomous file creation and project-wide bug resolution.
+    Context-Aware Engine: A complexity-scoring system that understands your entire repository's architecture.
+    Model Agnostic: Supports OpenAI, Claude, and local models via Model Context Protocol (MCP).
+    Unit Test First: Automatic generation of tests to validate all AI-generated logic. 
 
- AI assistants feature for project mangement,
- XCoder is an AI agent for build the project.
-
-
- 🚀 XCoder
-The Intelligent AI Coding Assistant for Modern Workflows
-XCoder is an open-source AI agent designed to bridge the gap between high-level logic and executable code. Whether you are building for iOS, Web, or Backend, XCoder provides context-aware suggestions and automated refactoring.
-🛠 Features
-
-    Context-Aware Completion: Understands your entire codebase, not just the open file.
-    Multi-Model Support: Plug in OpenAI, Claude, or local Llama models.
-    Unit Test Generation: Automatically writes tests for new functions.
-    Code Explanation: Highlight complex logic and get a plain-English breakdown.
-
-🚀 Getting Started
+⌨️ Slash Commands
+Interact with XCoder directly through the command palette:
+Command 
+	Action
+/create <feature>	Generates new components or modules from a description.
+/fix	Analyzes build errors and proposes immediate code corrections.
+/refactor	Optimizes code for readability and performance without changing logic.
+/test	Scans files and generates missing unit tests.
+/explain	Translates complex logic into plain English for code reviews.
+/ask <query>	Queries the entire codebase for specific logic or configurations.
+🚀 Quick Start
 Prerequisites
 
     Node.js (v18+) or Python (3.10+)
-    An API Key from your preferred provider (OpenAI/Anthropic)
+    An API Key (OpenAI, Anthropic, or a local provider) 
 
 Installation
 bash
@@ -28,26 +30,22 @@ bash
 # Clone the repository
 git clone https://github.com
 
-# Navigate to the directory
+# Navigate to the project
 cd xcoder
 
 # Install dependencies
 npm install  # or pip install -r requirements.txt
 
 Use code with caution.
-Usage
-bash
+Configuration
+Create a .env file in the root directory: 
+env
 
-# Start the XCoder agent
-npm start
+XCODER_API_KEY=your_key_here
+XCODER_MODEL=claude-3-5-sonnet
 
 Use code with caution.
 🤝 Contributing
-We love contributors! Please see CONTRIBUTING.md for guidelines on how to submit Pull Requests.
+We welcome contributions! Please see CONTRIBUTING.md for our AI-disclosure policy and coding standards. 
 📄 License
 This project is licensed under the MIT License.
-Refining the Scope
-To make this README more specific, I need to know:
-
-    Is XCoder going to be a VS Code Extension, a Standalone Desktop App, or a Command Line Tool (CLI)?
-    Which programming language will we use to build it (e.g., TypeScript, Python, or Swift)?

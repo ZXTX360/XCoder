@@ -1,0 +1,53 @@
+This document outlines the specialized process for preparing the XCoder GT SuperPower model. Unlike standard LLM tuning, "GT SuperPower" training focuses on Agentic Reasoning (planning before coding) and Complexity-Weighted Learning.
+------------------------------
+📘 XCoder GT SuperPower: Training Preparation Guide1. System Requirements & Environment
+To train the 8B (Speed) or 70B (Ultra) variants, ensure your environment meets these specifications:
+
+* GPU:
+* 8B Model: 1x NVIDIA RTX 4090 (24GB) or A6000.
+   * 70B Model: 4x or 8x NVIDIA A100/H100 (80GB).
+* Software Stack:
+* PyTorch 2.2+ with CUDA 12.1+.
+   * Unsloth or FlashAttention-2 for 2x faster training memory efficiency.
+   * DeepSpeed (ZeRO-3) for 70B parameter sharding.
+
+------------------------------
+2. Data Preparation: The "Triple-Filter" Pipeline
+The "SuperPower" comes from the quality of data, not just the quantity. Follow this 3-step pipeline:
+Step A: Complexity Scoring (The XCoder Method)
+Run all raw code snippets through the Complexity Scorer.
+
+* Formula: Score = (Cyclomatic Complexity * 0.4) + (Nesting Depth * 0.3) + (Logic Density * 0.3).
+* Action: Discard any samples with a score below 15/100. This removes "boilerplate" code that thins out the model's intelligence.
+
+Step B: Synthetic Trajectory Generation
+Convert static "Instruction ➔ Code" pairs into Agentic Trajectories. Use a teacher model (e.g., GPT-4o) to wrap the code in a reasoning chain:
+
+   1. Thought: Analyze the user's request.
+   2. Plan: List 3 steps to achieve the goal.
+   3. Action: Write the actual code.
+   4. Verification: Describe how to test this code.
+
+Step C: Diversity-Based Sampling
+To prevent the model from becoming a "one-trick pony," use K-Means clustering on the embeddings of your instructions. Select an equal number of samples from each cluster (e.g., UI, Backend, Algorithms, DevOps) to ensure broad "SuperPower" capabilities.
+------------------------------
+3. Training Architecture (GRPO & LoRA)
+For the "GT" performance, we use Group Relative Policy Optimization (GRPO). This reinforces the model when it finds a "correct" path.
+
+* SFT Phase (Supervised): Initial fine-tuning on 160K high-complexity samples to teach the "XCoder style."
+* RLVR Phase (Reinforcement Learning with Verifiable Rewards):
+* The model generates 5 different code solutions for one prompt.
+   * A Compiler/Unit Test Runner checks each solution.
+   * The model is rewarded only for the solutions that pass 100% of tests.
+
+------------------------------
+4. Pre-Flight Checklist
+Before hitting "Start Training," verify:
+
+* Tokenizer: Is it extended to handle specialized tokens like <|thought|> or <|plan|>?
+* Context Length: Is it set to at least 8,192 (for 8B) or 32,768 (for 70B)?
+* Validation Set: Do you have 500 "HumanEval" style problems ready to track progress?
+
+------------------------------
+How would you like to proceed? We can generate the Python script for the Step B (Trajectory Generation) or configure the GRPO Reward Function for the final training phase.
+

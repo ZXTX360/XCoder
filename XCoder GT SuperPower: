@@ -1,4 +1,3 @@
-This document outlines the specialized process for preparing the XCoder GT SuperPower model. Unlike standard LLM tuning, "GT SuperPower" training focuses on Agentic Reasoning (planning before coding) and Complexity-Weighted Learning.
 ------------------------------
 📘 XCoder GT SuperPower: Training Preparation Guide1. System Requirements & Environment
 To train the 8B (Speed) or 70B (Ultra) variants, ensure your environment meets these specifications:

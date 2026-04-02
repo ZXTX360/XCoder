@@ -22,3 +22,59 @@ In gaming communities, XCoder is a popular Python-based utility for compressing 
 
 Note on "GT": The "GT" suffix often refers to Georgia Tech (GT) or GTarcade (a mobile game platform) when mentioned alongside Xcode or XCoder in search queries. For instance, developers at Georgia Tech often discuss using Xcode for iOS projects in university-specific forums. 
 Are you looking for help with a specific modding project using XCoder, or are you interested in deploying the XCoder LLM for your own coding assistant?
+
+
+This document provides a technical overview and setup guide for the
+XCoder (GT) development tool, a popular utility for decompressing and modding Supercell game assets (like Brawl Stars or Clash of Clans).
+XCoder (GT) Development & Modding Guide
+1. Project Overview
+XCoder is a Python-based, multiplatform tool designed to handle Supercell's proprietary file formats. It is primarily used to:
+
+    Decode/Decompress: Convert .sc and .csv files into editable chunks or images.
+    Encode/Compress: Reassemble modified assets into game-ready formats using LZHAM or LZMA compression.
+    Manage Assets: Extract sprites and modify game logic through human-readable spreadsheets.
+
+2. System Requirements
+To run or develop with XCoder, ensure the following environment is set up:
+
+    Python 3.7+: Required for core script execution.
+    Dependencies: The tool relies on several Python libraries which can be installed via pip:
+        pillow (for image processing).
+        colorama (for console UI).
+        pylzham & lzma (for decompression/compression).
+
+3. Installation & Setup
+For PC (Windows/macOS/Linux)
+
+    Download Python: Install Python 3.7 or newer from the official Python website. Ensure "Add Python to PATH" is checked during installation.
+    Clone/Download XCoder: Get the latest release from the MasterDevX/XCoder GitHub repository.
+    Run Initialization: Open a terminal in the XCoder folder and run:
+    bash
+
+    python Main.py
+
+    Use code with caution.
+
+    The script will automatically detect missing libraries and prompt you to install them.
+
+For Mobile (Android)
+
+    Install PyDroid 3: Download the app from the Google Play Store.
+    Setup XCoder: Download and extract the XCoder files to your internal storage.
+    Execute: Open Main.py within the PyDroid app to launch the console GUI.
+
+4. Core Development Workflow
+Once the environment is active, use the following menu options to develop your mod:
+Feature	Description
+Decode SC	Converts .sc files in the In-Compressed-SC folder into editable data.
+Encode SC	Compresses files from In-Decompressed-SC back into game-ready files.
+Sprite Extraction	Decodes _tex.sc files specifically into viewable PNG sprites.
+Clear Workspace	Resets all In and Out folders to prevent version conflicts.
+5. Troubleshooting Common Issues
+
+    ImportError (colorama/pillow): Run the script as administrator or manually install with pip install colorama pillow.
+    LZHAM Not Installed: Some systems require specific C++ redistributables to compile the pylzham library used for compression.
+    Tile Extension Errors: Usually caused by attempting to encode images that do not match the original sprite dimensions.
+
+Would you like a more detailed breakdown of the .sc file structure or a guide on how to edit the CSV logic for specific game balance changes?
+
